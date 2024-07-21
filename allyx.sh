@@ -13,7 +13,9 @@ git clone $UPSTREAM_URL $LOCAL_DIR
 
 REV=$(git -C $LOCAL_DIR rev-parse --short HEAD)
 echo
-echo "# Using git version: $REV"
+echo "# System Information"
+echo "Kernel version: $(uname -r)"
+echo "Repo version: $REV"
 
 # Removing old modules
 echo
