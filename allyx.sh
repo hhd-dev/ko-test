@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MODULES=("asus-wmi")
-UPSTREAM_URL="https://github.com/hhd-dev/ko-git"
+UPSTREAM_URL="https://github.com/hhd-dev/ko-test"
 set -e
 
 # Cleaning up download dir
