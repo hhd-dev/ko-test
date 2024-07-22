@@ -25,7 +25,7 @@ done
 
 # Applying new modules
 echo
-echo "# Applying new modules"
+echo "# Reloading dependent modules"
 for module in "${CHILD_MODULES[@]}"; do
     echo "- Re-enabling module: '$module'"
     sudo modprobe $module
