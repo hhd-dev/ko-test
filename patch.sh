@@ -11,7 +11,7 @@ mkdir -p $LOCAL_DIR
 git clone --depth=1 $UPSTREAM_URL $LOCAL_DIR
 
 REV=$(git -C $LOCAL_DIR rev-parse --short HEAD)
-NAME=$(git rev-list -C $LOCAL_DIR --max-count=1 --no-commit-header --format=%B HEAD)
+NAME=$(git -C $LOCAL_DIR rev-list --max-count=1 --no-commit-header --format=%B HEAD)
 echo
 echo "# System Information"
 echo "Kernel version: $(uname -r)"
