@@ -1,6 +1,9 @@
 #!/bin/bash
 
-MODULES=("asus-wmi")
+DISABLE_MODULES=("asus-nb-wmi" "asus-bios" "asus-wmi")
+CHANGED_MODULES=("asus-wmi")
+CHILD_MODULES=("asus-nb-wmi" "asus-bios")
+
 UPSTREAM_URL="https://github.com/hhd-dev/ko-test"
 LOCAL_DIR="/tmp/ko-git"
 set -e
@@ -20,7 +23,7 @@ echo "Repo version: $REV"
 # Removing old modules
 echo
 echo "# Removing old modules"
-for module in "${MODULES[@]}"; do
+for module in "${DISABLE_MODULES[@]}"; do
     echo "- Removing module: '$module'"
     sudo rmmod $module || true
 done
@@ -28,7 +31,15 @@ done
 # Applying new modules
 echo
 echo "# Applying new modules"
-for module in "${MODULES[@]}"; do
-    echo "- Applying module: '$module'"
+for module in "${CHANGED_MODULES[@]}"; do
+    echo "- Applying patched module: '$module'"
     sudo insmod $LOCAL_DIR/$module.ko
+done
+
+# Applying new modules
+echo
+echo "# Applying new modules"
+for module in "${CHILD_MODULES[@]}"; do
+    echo "- Re-enabling module: '$module'"
+    sudo modprobe $module
 done
