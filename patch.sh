@@ -8,7 +8,7 @@ set -e
 echo "# Downloading data to '$LOCAL_DIR'"
 rm -rf $LOCAL_DIR
 mkdir -p $LOCAL_DIR
-git clone $UPSTREAM_URL $LOCAL_DIR
+git clone --depth=1 $UPSTREAM_URL $LOCAL_DIR
 
 REV=$(git -C $LOCAL_DIR rev-parse --short HEAD)
 NAME=$(git rev-list --max-count=1 --no-commit-header --format=%B HEAD)
