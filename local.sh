@@ -14,7 +14,7 @@ CHANGED_MODULE_NAMES=($(basename -a ${CHANGED_MODULES[@]%.ko}))
 if [ -z "$CHILD_MODULES" ]; then
     DISABLE_MODULES=("${CHANGED_MODULE_NAMES[@]}")
 else
-    DISABLE_MODULES=( "${CHANGED_MODULE_NAMES[@]}" "${CHILD_MODULES[@]}" )
+    DISABLE_MODULES=( "${CHILD_MODULES[@]}" "${CHANGED_MODULE_NAMES[@]}" )
 fi
 
 set -e
